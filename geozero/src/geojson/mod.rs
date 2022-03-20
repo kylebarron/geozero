@@ -1,4 +1,5 @@
 //! GeoJSON conversions.
+pub(crate) mod feature_iterator;
 pub(crate) mod geojson_reader;
 pub(crate) mod geojson_writer;
 
