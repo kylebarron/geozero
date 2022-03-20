@@ -12,10 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-extern crate serde_derive;
-extern crate serde;
-extern crate serde_json;
-
 use geojson::Feature;
 use std::io;
 use std::marker::PhantomData;
@@ -41,7 +37,8 @@ impl<R> FeatureIterator<R> {
 }
 
 impl<R> FeatureIterator<R>
-    where R: io::Read
+where
+    R: io::Read,
 {
     fn skip_past_byte(&mut self, byte: u8) -> io::Result<bool> {
         let mut one_byte = [0];
@@ -53,17 +50,22 @@ impl<R> FeatureIterator<R>
                 return Ok(true);
             }
             if one_byte[0] == b']' {
-              self.skip_appendix = true;
+                self.skip_appendix = true;
             }
-            if !self.skip_preamble && !self.skip_appendix && !(one_byte[0] as char).is_whitespace() {
-                return Err(io::Error::new(io::ErrorKind::InvalidInput, format!("byte {}", one_byte[0])));
+            if !self.skip_preamble && !self.skip_appendix && !(one_byte[0] as char).is_whitespace()
+            {
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidInput,
+                    format!("byte {}", one_byte[0]),
+                ));
             }
         }
     }
 }
 
 impl<R> Iterator for FeatureIterator<R>
-    where R: io::Read
+where
+    R: io::Read,
 {
     type Item = io::Result<Feature>;
 
@@ -86,9 +88,7 @@ impl<R> Iterator for FeatureIterator<R>
                 self.skip = Some(b',');
                 Some(Ok(v))
             }
-            Some(Err(err)) => {
-                Some(Err(err.into()))
-            }
+            Some(Err(err)) => Some(Err(err.into())),
             None => None,
         }
     }

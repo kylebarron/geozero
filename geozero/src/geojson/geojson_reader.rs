@@ -1,10 +1,10 @@
-use crate::geojson::feature_iterator::FeatureIterator;
-use geojson::Feature;
 use crate::error::{GeozeroError, Result};
+use crate::geojson::feature_iterator::FeatureIterator;
 use crate::{
     ColumnValue, FeatureProcessor, GeomProcessor, GeozeroDatasource, GeozeroGeometry,
     PropertyProcessor,
 };
+use geojson::Feature;
 use geojson::{GeoJson as GeoGeoJson, Geometry, Value};
 use serde_json::map::Map;
 use serde_json::value::Value as JsonValue;
@@ -104,7 +104,10 @@ fn process_geojson<P: FeatureProcessor>(gj: &GeoGeoJson, processor: &mut P) -> R
 }
 
 /// Process top-level GeoJSON items
-fn process_geojson_feature<P: FeatureProcessor>(feature: &Feature, processor: &mut P) -> Result<()> {
+fn process_geojson_feature<P: FeatureProcessor>(
+    feature: &Feature,
+    processor: &mut P,
+) -> Result<()> {
     processor.dataset_begin(None)?;
     if feature.geometry.is_some() || feature.properties.is_some() {
         processor.feature_begin(0)?;
