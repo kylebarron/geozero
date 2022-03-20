@@ -18,6 +18,7 @@ pub struct MvtWriter {
 #[derive(PartialEq)]
 enum LineState {
     None,
+    // Issue LineTo command afer first point
     Line(usize),
     Ring(usize),
 }
