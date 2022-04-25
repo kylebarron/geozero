@@ -288,3 +288,16 @@ read_geojson_geom(&mut f, &mut points)?;
 points.index.build_index();
 ```
 Full source code: [kdbush.rs](./geozero/tests/kdbush.rs)
+
+
+## Releasing
+
+Because some tests have requirements which end up in circular dependencies, version bumps and releases have to be done in a particular order.
+
+Rough pre-release procedure:
+
+* Check for compatible major updates with `cargo outdated`
+* `cargo test --all-features --all`
+* `export DATABASE_URL="postgresql://$USER@localhost/postgistest?sslmode=disable"` (see `geozero/tests/data/postgis.sql`)
+* `cargo test --all-features -- --ignored postgis --test-threads 1`
+* Bump version in `geozero/Cargo.toml`
