@@ -29,6 +29,7 @@
 //! | WKT       | [wkt::WktStr], [wkt::WktString]                                      | XYZM       | [wkt::WktReader], [wkt::WktStr], [wkt::WktString]                    | [ToWkt]             | [WktWriter](wkt::WktWriter)             |
 
 mod api;
+mod bbox;
 pub mod error;
 mod feature_processor;
 mod geometry_processor;
@@ -36,6 +37,7 @@ mod multiplex;
 mod property_processor;
 
 pub use api::*;
+pub use bbox::*;
 pub use feature_processor::*;
 pub use geometry_processor::*;
 pub use multiplex::*;
