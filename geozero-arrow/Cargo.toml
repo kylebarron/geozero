@@ -1,0 +1,19 @@
+[package]
+name = "geozero-arrow"
+version = "0.1.0"
+authors = ["Pirmin Kalberer <pka@sourcepole.ch>"]
+edition = "2018"
+description = "GeoArrow reader with GeoZero API."
+homepage = "https://github.com/georust/geozero"
+repository = "https://github.com/georust/geozero"
+readme = "README.md"
+license = "MIT/Apache-2.0"
+keywords = ["geo", "arrow", "apache arrow"]
+
+[dependencies]
+thiserror = "1.0"
+geozero = { version = "0.9", default-features = false }
+arrow2 = "0.11.2"
+
+[dev-dependencies]
+geozero = { version = "0.9", default-features = true }

@@ -1,6 +1,6 @@
 [workspace]
-members = ["geozero", "geozero-shp", "geozero-cli", "geozero-bench"]
-default-members = ["geozero", "geozero-shp", "geozero-cli"]
+members = ["geozero", "geozero-shp", "geozero-cli", "geozero-bench", "geozero-arrow"]
+default-members = ["geozero", "geozero-shp", "geozero-cli", "geozero-arrow"]
 
 [patch.crates-io]
 geozero = { path = "geozero" }
