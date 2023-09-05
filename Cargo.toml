@@ -47,7 +47,7 @@ polylabel = "2.5"
 postgis = "0.9.0"
 postgres = "0.19"
 postgres-types = "0.2"
-prost = "0.11.9"
+prost = "0.12.0"
 # NOTICE: When updating prost-build, remove geozero/src/mvt/vector_tile.rs to force a rebuild
 prost-build = "0.11.9"
 scroll = "0.11"
